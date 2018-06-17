@@ -12,28 +12,28 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeworkController">
    <children>
       <SplitPane dividerPositions="0.6182364729458918" layoutX="111.0" layoutY="135.0" orientation="VERTICAL" prefHeight="1000.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView layoutX="100.0" layoutY="160.0" prefHeight="444.0" prefWidth="670.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0" />
+                  <TableView fx:id="tableView" layoutX="100.0" layoutY="160.0" prefHeight="444.0" prefWidth="670.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0" />
                   <Label layoutX="214.0" layoutY="43.0" text="Задайте количество столбцов и строк ниже и нажмите „Ок“" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="465.0" layoutY="60.0" mnemonicParsing="false" text="ОК">
+                  <Button fx:id="ok" layoutX="465.0" layoutY="60.0" mnemonicParsing="false" onAction="#okButtonAction" text="ОК">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="26.0" layoutY="63.0" prefHeight="44.0" prefWidth="171.0" promptText="Columns" AnchorPane.leftAnchor="26.0">
+                  <TextField fx:id="columns" layoutX="26.0" layoutY="63.0" prefHeight="44.0" prefWidth="171.0" promptText="Columns" AnchorPane.leftAnchor="26.0">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
-                  <TextField layoutX="240.0" layoutY="63.0" prefHeight="44.0" prefWidth="175.0" promptText="Rows" AnchorPane.leftAnchor="240.0">
+                  <TextField fx:id="rows" layoutX="240.0" layoutY="63.0" prefHeight="44.0" prefWidth="175.0" promptText="Rows" AnchorPane.leftAnchor="240.0">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
@@ -48,17 +48,17 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="758.0" layoutY="95.0" prefHeight="34.0" prefWidth="55.0">
+                  <TextField layoutX="758.0" layoutY="95.0" prefHeight="34.0" prefWidth="55.0" promptText="From">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="858.0" layoutY="93.0" prefHeight="34.0" prefWidth="55.0">
+                  <TextField layoutX="858.0" layoutY="93.0" prefHeight="34.0" prefWidth="55.0" promptText="To">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="824.0" layoutY="102.0" prefHeight="30.0" prefWidth="26.0" text=" -" textAlignment="CENTER">
+                  <Label layoutX="828.0" layoutY="95.0" prefHeight="30.0" prefWidth="26.0" text=" -" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -68,9 +68,9 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutX="759.0" layoutY="152.0" text="Ввести значение в заданную ячейку" underline="true">
+                  <Label layoutX="758.0" layoutY="167.0" text="Ввести значение в заданную ячейку" underline="true">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
                   <Label layoutX="762.0" layoutY="194.0" text="Значение:">
@@ -78,43 +78,43 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="920.0" layoutY="194.0" text="Х:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="1012.0" layoutY="193.0" text="У:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="841.0" layoutY="187.0" prefHeight="30.0" prefWidth="66.0">
+                  <TextField layoutX="841.0" layoutY="187.0" prefHeight="30.0" prefWidth="66.0" promptText="Digit">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="948.0" layoutY="187.0" prefHeight="30.0" prefWidth="47.0">
+                  <TextField layoutX="912.0" layoutY="187.0" prefHeight="30.0" prefWidth="47.0" promptText="X">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="1038.0" layoutY="186.0" prefHeight="30.0" prefWidth="48.0">
+                  <TextField layoutX="967.0" layoutY="187.0" prefHeight="30.0" prefWidth="48.0" promptText="Y">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="759.0" layoutY="229.0" mnemonicParsing="false" text="Добавить значение" AnchorPane.leftAnchor="759.0">
+                  <Button layoutX="1036.0" layoutY="187.0" mnemonicParsing="false" text="Set" AnchorPane.leftAnchor="1036.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutX="754.0" layoutY="284.0" text="Выбрать шрифт" underline="true">
+                  <Label layoutX="755.0" layoutY="229.0" text="Выбрать шрифт" underline="true">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
-                  <ComboBox layoutX="750.0" layoutY="319.0" prefWidth="150.0" promptText="Готовый набор" />
-                  <ComboBox layoutX="936.0" layoutY="320.0" prefWidth="150.0" promptText="Системные шрифты" />
+                  <ComboBox layoutX="753.0" layoutY="254.0" prefWidth="150.0" promptText="Готовый набор" />
+                  <ComboBox layoutX="929.0" layoutY="254.0" prefWidth="150.0" promptText="Системные шрифты" />
+                  <Label layoutX="749.0" layoutY="300.0" text="Открыть файл" underline="true" AnchorPane.topAnchor="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="749.0" layoutY="333.0" mnemonicParsing="false" text="Выбрать файл для открытия">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -133,17 +133,6 @@
                      </font>
                   </Label>
                   <Button layoutX="382.0" layoutY="136.0" mnemonicParsing="false" text="Устанвить высоту">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Line layoutX="850.0" startY="350.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="5.0" AnchorPane.bottomAnchor="15.0" AnchorPane.topAnchor="15.0" />
-                  <Label layoutX="876.0" layoutY="24.0" text="Открыть файл" AnchorPane.topAnchor="15.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="876.0" layoutY="57.0" mnemonicParsing="false" text="Выбрать файл для открытия">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -1,3 +1,4 @@
+import controller.HomeworkController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,8 @@ public class DialogPr_main extends Application {
             this.primaryStage.setTitle("Отчетное задание по Основам программирования");
             this.primaryStage.setScene(scene);
             this.primaryStage.show();
+
+            var hwc = new HomeworkController();
 
         }
         catch (Exception e){
