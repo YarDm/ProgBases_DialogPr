@@ -22,6 +22,6 @@ public class HomeworkController {
     private void okButtonAction (ActionEvent e){
         System.out.println(columns.getText());
         System.out.print(rows.getText());
-        tableView.g
+      //  tableView.g
     }
 }

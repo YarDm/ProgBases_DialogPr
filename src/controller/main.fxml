@@ -63,7 +63,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="960.0" layoutY="94.0" mnemonicParsing="false" text="Заполнить">
+                  <Button layoutX="960.0" layoutY="94.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="101.0" text="Fill">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -83,12 +83,12 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="912.0" layoutY="187.0" prefHeight="30.0" prefWidth="47.0" promptText="X">
+                  <TextField layoutX="912.0" layoutY="187.0" prefHeight="30.0" prefWidth="47.0" promptText="row">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="967.0" layoutY="187.0" prefHeight="30.0" prefWidth="48.0" promptText="Y">
+                  <TextField layoutX="967.0" layoutY="187.0" prefHeight="30.0" prefWidth="48.0" promptText="col">
                      <font>
                         <Font size="14.0" />
                      </font>
