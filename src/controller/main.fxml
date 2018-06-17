@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.6182364729458918" layoutX="111.0" layoutY="135.0" orientation="VERTICAL" prefHeight="1000.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -24,26 +24,16 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="603.0" layoutY="71.0" mnemonicParsing="false" text="ОК">
+                  <Button layoutX="462.0" layoutY="71.0" mnemonicParsing="false" text="ОК">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="57.0" layoutY="84.0" text="Столбцы:" AnchorPane.leftAnchor="20.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="123.0" layoutY="69.0" prefHeight="44.0" prefWidth="171.0" AnchorPane.leftAnchor="123.0">
+                  <TextField layoutX="26.0" layoutY="63.0" prefHeight="44.0" prefWidth="171.0" promptText="Columns" AnchorPane.leftAnchor="26.0">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
-                  <Label layoutX="308.0" layoutY="84.0" prefHeight="20.0" prefWidth="70.0" text="Строки:">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="390.0" layoutY="70.0" prefHeight="44.0" prefWidth="175.0" AnchorPane.leftAnchor="390.0">
+                  <TextField layoutX="240.0" layoutY="63.0" prefHeight="44.0" prefWidth="175.0" promptText="Rows" AnchorPane.leftAnchor="240.0">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>

@@ -13,7 +13,7 @@ public class DialogPr_main extends Application {
         this.primaryStage = primaryStage;
 
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("/controller/homework.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/controller/main.fxml"));
             var scene = new Scene(root);
             this.primaryStage.setTitle("Отчетное задание по Основам программирования");
             this.primaryStage.setScene(scene);
