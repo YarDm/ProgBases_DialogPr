@@ -1,35 +1,76 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
 
-    //TODO: create this class like http://java-online.ru/swing-layout.xhtml#grouplayout
+    JTextField colQuantity;
+    JTextField rowQuantity;
+    static TableData td;
+
     public MainFrame(){
-        JFrame mainFrame = new JFrame();
-        GroupLayout groupLayout = new GroupLayout(getContentPane());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setName("Main frame");
+        setLocation(50, 50);
+        setPreferredSize(new Dimension(400, 500));
 
-        JLabel start = new JLabel("Введите количество столбцов и строк и нажмите 'ОК'");
-        JTextField colField = new JTextField();
-        colField.setText("columns");
-        JTextField rowField = new JTextField();
-        rowField.setText("rows");
-        JTable table = new JTable();
-        mainFrame.setTitle("Экзаменационное задание по Основам программирования");
-        mainFrame.setLocation(300,10);
-        mainFrame.setSize(new Dimension(600, 800));
-        mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        mainFrame.setVisible(true);
+        var catName = new JLabel("Задайте количество столбцов и нажмите ОК");
+        catName.setPreferredSize(new Dimension(370,15));
+        catName.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        colQuantity = new JTextField();
+        colQuantity.setToolTipText("col");
+        colQuantity.setPreferredSize(new Dimension(60, 35));
+        rowQuantity = new JTextField();
+        rowQuantity.setToolTipText("row");
+        rowQuantity.setPreferredSize(new Dimension(60, 35));
+        var okButton = new JButton("OK");
+        okButton.setPreferredSize(new Dimension(60, 35));
+        var table = new JTable();
+        table.setPreferredSize(new Dimension(380,400));
 
-        mainFrame.setLayout(groupLayout);
-        groupLayout.setAutoCreateGaps(true);
-        groupLayout.setAutoCreateContainerGaps(true);
-        groupLayout.setHorizontalGroup(groupLayout.createSequentialGroup()
-                .addComponent(start));
+        okButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int cols = Integer.parseInt(colQuantity.getText());
+                int rows = Integer.parseInt(rowQuantity.getText());
+                new FillForm();
+                okButton.setEnabled(false);
 
+                td = new TableData(rows, cols);
+
+                table.setModel(new NewTableModel(rows, cols) {
+                    @Override
+                    public int getRowCount() {
+                        return rows;
+                    }
+
+                    @Override
+                    public int getColumnCount() {
+                        return cols;
+                    }
+
+                    @Override
+                    public Object getValueAt(int rowIndex, int columnIndex) {
+                        return null;
+                    }
+                });
+
+            }
+        });
+
+
+        Container container = getContentPane();
+        container.setLayout(new FlowLayout(FlowLayout.CENTER));
+        container.add(catName);
+        container.add(colQuantity);
+        container.add(rowQuantity);
+        container.add(okButton);
+        container.add(table);
+
+        pack();
+        setVisible(true);
     }
-
-
-
 
     public static void main(String[] args){
         new MainFrame();
