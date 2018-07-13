@@ -1,19 +1,48 @@
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 
-public abstract class NewTableModel extends AbstractTableModel {
+public class NewTableModel extends AbstractTableModel {
 
-    NewTableModel(int row, int col) {
-        getRowCount(row);
-        getColumnCount(col);
+    private Object[][] data;
+    private int row;
+    private int col;
+
+    class TML implements TableModelListener{
+        public void tableChanged(TableModelEvent event){
+        }
+
     }
 
-    public int getRowCount(int row) {
+    NewTableModel(TableData td) {
+        this.row = td.getRows();
+        this.col = td.getCols();
+        data = new Object[row][col];
+        addTableModelListener(new TML());
+    }
+
+    @Override
+    public int getRowCount() {
         return row;
     }
 
-    public int getColumnCount(int col) {
-        return col;
+    @Override
+    public int getColumnCount() { return col; }
+
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return true;
     }
 
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+
+        return data[rowIndex][columnIndex];
+    }
+
+
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        data[rowIndex][columnIndex] = aValue;
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
 }
