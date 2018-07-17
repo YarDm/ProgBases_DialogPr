@@ -1,3 +1,7 @@
+import controller.NewTableModel;
+import model.TableData;
+import view.FontChoiseDialog;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -79,6 +83,14 @@ public class MainFrame extends JFrame {
         JButton vFillButton = new JButton("Set");
         vFillButton.setPreferredSize(new Dimension(60,35));
 
+        JLabel chooseFont = new JLabel("Выбор шрифта:");
+        chooseFont.setPreferredSize(new Dimension(370,25));
+        chooseFont.setHorizontalAlignment(SwingConstants.CENTER);
+        JButton sDialogBtn = new JButton("Выбрать шрифт");
+        sDialogBtn.setPreferredSize(new Dimension(130,35));
+        JComboBox <String> fontChooser = new JComboBox<String>();
+        fontChooser.setPreferredSize(new Dimension(180,35));
+
 
         okButton.addActionListener(e -> {
             int cols = Integer.parseInt(rowQuantity.getText());
@@ -116,7 +128,13 @@ public class MainFrame extends JFrame {
 
             table.setValueAt(val, row, col);
             table.updateUI();
-            System.out.println(table.getValueAt(row, col));
+
+        });
+
+        sDialogBtn.addActionListener(e -> {
+            FontChoiseDialog fcd = new FontChoiseDialog(null);
+            fcd.showDialog();
+            table.setFont(fcd.getFont());
         });
 
 
@@ -146,6 +164,10 @@ public class MainFrame extends JFrame {
         eastSide.add(vRow);
         eastSide.add(vCol);
         eastSide.add(vFillButton);
+
+        eastSide.add(chooseFont);
+        eastSide.add(sDialogBtn);
+        eastSide.add(fontChooser);
 
         northPanel.add(westSide, "West");
         northPanel.add(eastSide, "East");

@@ -1,3 +1,5 @@
+package model;
+
 public class TableData {
     private int rows;
     private int cols;

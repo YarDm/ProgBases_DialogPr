@@ -1,3 +1,7 @@
+package controller;
+
+import model.TableData;
+
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -15,7 +19,7 @@ public class NewTableModel extends AbstractTableModel {
 
     }
 
-    NewTableModel(TableData td) {
+    public NewTableModel(TableData td) {
         this.row = td.getRows();
         this.col = td.getCols();
         data = new Object[row][col];
