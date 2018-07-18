@@ -1,9 +1,11 @@
 import controller.NewTableModel;
+import model.FontsForCB;
 import model.TableData;
 import view.FontChoiseDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
 
@@ -22,8 +24,10 @@ public class MainFrame extends JFrame {
     private JTextField vCol;
     private JTextField vRow;
 
+    FontsForCB ffcb = new FontsForCB();
 
-    private MainFrame(){
+
+    private MainFrame() throws IOException, FontFormatException {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setName("Main frame");
         setLocation(50, 50);
@@ -88,8 +92,9 @@ public class MainFrame extends JFrame {
         chooseFont.setHorizontalAlignment(SwingConstants.CENTER);
         JButton sDialogBtn = new JButton("Выбрать шрифт");
         sDialogBtn.setPreferredSize(new Dimension(130,35));
-        JComboBox <String> fontChooser = new JComboBox<String>();
+        JComboBox <String> fontChooser = new JComboBox<String>(ffcb.getFontsList());
         fontChooser.setPreferredSize(new Dimension(180,35));
+
 
 
         okButton.addActionListener(e -> {
@@ -137,6 +142,11 @@ public class MainFrame extends JFrame {
             table.setFont(fcd.getFont());
         });
 
+        fontChooser.addActionListener(e -> {
+            String [] fonts = ffcb.getFontsList();
+            table.setFont(new Font(fonts[fontChooser.getSelectedIndex()], Font.BOLD, 20));
+        });
+
 
         JPanel northPanel = new JPanel(new BorderLayout());
         JPanel westSide = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -179,7 +189,7 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, FontFormatException {
         new MainFrame();
     }
 

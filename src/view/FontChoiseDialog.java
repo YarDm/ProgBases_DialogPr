@@ -10,7 +10,6 @@ import java.awt.event.WindowEvent;
 
 /**
  * Диалог выбора шрифта с возможностью предварительного просмотра.
- * @author Старовъръ
  */
 public class FontChoiseDialog extends JDialog implements ActionListener {
     // Признак подтверждения пользователем выбора шрифта.
