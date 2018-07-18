@@ -1,11 +1,12 @@
 import controller.NewTableModel;
 import model.FontsForCB;
 import model.TableData;
+import view.FileShowDialog;
 import view.FontChoiseDialog;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 
 public class MainFrame extends JFrame {
 
@@ -24,7 +25,10 @@ public class MainFrame extends JFrame {
     private JTextField vCol;
     private JTextField vRow;
 
-    FontsForCB ffcb = new FontsForCB();
+    private FontsForCB ffcb = new FontsForCB();
+
+    private JFileChooser fileChooser;
+    private FileShowDialog showDialog;
 
 
     private MainFrame() throws IOException, FontFormatException {
@@ -95,6 +99,12 @@ public class MainFrame extends JFrame {
         JComboBox <String> fontChooser = new JComboBox<String>(ffcb.getFontsList());
         fontChooser.setPreferredSize(new Dimension(180,35));
 
+        JLabel chooseFile = new JLabel("Выберете файл для просмотра:");
+        chooseFile.setPreferredSize(new Dimension(370,25));
+        chooseFile.setHorizontalAlignment(SwingConstants.CENTER);
+        JButton openFile = new JButton("Выбрать файл");
+        openFile.setPreferredSize(new Dimension(180,35));
+
 
 
         okButton.addActionListener(e -> {
@@ -147,6 +157,31 @@ public class MainFrame extends JFrame {
             table.setFont(new Font(fonts[fontChooser.getSelectedIndex()], Font.BOLD, 20));
         });
 
+        openFile.addActionListener(e -> {
+            fileChooser = new JFileChooser();
+            int ret = fileChooser.showDialog(null, "Открыть");
+            if (ret == JFileChooser.APPROVE_OPTION){
+                File q = fileChooser.getSelectedFile();
+                StringBuilder sb = new StringBuilder();
+                String line;
+                try {
+                    BufferedReader reader = new BufferedReader(new FileReader(q));
+                    while ((line = reader.readLine()) != null){
+                        sb.append(line);
+                    }
+                    showDialog = new FileShowDialog();
+                    showDialog.setText(sb.toString());
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+
+        });
+
 
         JPanel northPanel = new JPanel(new BorderLayout());
         JPanel westSide = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -178,6 +213,9 @@ public class MainFrame extends JFrame {
         eastSide.add(chooseFont);
         eastSide.add(sDialogBtn);
         eastSide.add(fontChooser);
+
+        eastSide.add(chooseFile);
+        eastSide.add(openFile);
 
         northPanel.add(westSide, "West");
         northPanel.add(eastSide, "East");
