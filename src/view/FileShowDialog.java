@@ -11,12 +11,13 @@ public class FileShowDialog extends JDialog {
 
 
     public FileShowDialog(){
-        super.setPreferredSize(new Dimension(300, 400));
+        super.setPreferredSize(new Dimension(700, 400));
         setResizable(false);
+        setLocation(100,100);
         jTextArea = new JTextArea();
         JScrollPane jsp = new JScrollPane(jTextArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        jsp.setPreferredSize(new Dimension(290,390));
+        jsp.setPreferredSize(new Dimension(690,390));
         add(jsp);
         pack();
         setVisible(true);
