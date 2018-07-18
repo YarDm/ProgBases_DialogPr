@@ -168,6 +168,7 @@ public class MainFrame extends JFrame {
                     BufferedReader reader = new BufferedReader(new FileReader(q));
                     while ((line = reader.readLine()) != null){
                         sb.append(line);
+                        sb.append("\n");
                     }
                     showDialog = new FileShowDialog();
                     showDialog.setText(sb.toString());
