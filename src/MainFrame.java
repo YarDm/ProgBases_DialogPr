@@ -30,6 +30,10 @@ public class MainFrame extends JFrame {
     private JFileChooser fileChooser;
     private FileShowDialog showDialog;
 
+    JList<String> list;
+
+    JComboBox listItemNums;
+
 
     private MainFrame() throws IOException, FontFormatException {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -96,7 +100,7 @@ public class MainFrame extends JFrame {
         chooseFont.setHorizontalAlignment(SwingConstants.CENTER);
         JButton sDialogBtn = new JButton("Выбрать шрифт");
         sDialogBtn.setPreferredSize(new Dimension(130,35));
-        JComboBox <String> fontChooser = new JComboBox<String>(ffcb.getFontsList());
+        JComboBox <String> fontChooser = new JComboBox<>(ffcb.getFontsList());
         fontChooser.setPreferredSize(new Dimension(180,35));
 
         JLabel chooseFile = new JLabel("Выберете файл для просмотра:");
@@ -105,6 +109,33 @@ public class MainFrame extends JFrame {
         JButton openFile = new JButton("Выбрать файл");
         openFile.setPreferredSize(new Dimension(180,35));
 
+        JLabel listManipulations = new JLabel("Работа со списком:");
+        listManipulations.setPreferredSize(new Dimension(270,25));
+        listManipulations.setHorizontalAlignment(SwingConstants.CENTER);
+        listManipulations.setFont(new Font("TimesNewRoman", Font.PLAIN, 15));
+        String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        list = new JList<>(data);
+        JScrollPane listScrollPane = new JScrollPane(list);
+        listScrollPane.setPreferredSize(new Dimension(285, 180));
+
+        JLabel setColor = new JLabel("Выберете элемент и его цвет:");
+        setColor.setPreferredSize(new Dimension(230,25));
+        setColor.setHorizontalAlignment(SwingConstants.CENTER);
+
+        Integer[] items = new Integer[data.length];
+        for (int i = 0; i < data.length; i++){
+            items[i] = i;
+        }
+        listItemNums = new JComboBox<Integer>(items);
+        listItemNums.setPreferredSize(new Dimension(230,35));
+        JButton choiseButton = new JButton("Выбрать цвет");
+        choiseButton.setPreferredSize(new Dimension(230,130));
+
+        JLabel setMoreFive = new JLabel("Увеличить пункты на пять:");
+        setMoreFive.setPreferredSize(new Dimension(230,35));
+        setMoreFive.setHorizontalAlignment(SwingConstants.CENTER);
+        JButton doThat = new JButton("Сделать это!");
+        doThat.setPreferredSize(new Dimension(230,160));
 
 
         okButton.addActionListener(e -> {
@@ -177,14 +208,28 @@ public class MainFrame extends JFrame {
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-
             }
+        });
 
+        choiseButton.addActionListener(e -> {
+            Color color = JColorChooser.showDialog(this, "Выберете цвет", Color.BLACK);
+            list.setSelectedIndex(listItemNums.getSelectedIndex());
+            list.setSelectionBackground(color);
+        });
+
+        doThat.addActionListener(e -> {
+            list.setModel();
+            int fontSize = 0;
+            for (int i = 0; i<data.length; i++){
+                fontSize = fontSize + 5;
+                Font font = new Font("TimesNewRoman", Font.ITALIC, fontSize);
+                ;
+            }
         });
 
 
         JPanel northPanel = new JPanel(new BorderLayout());
+
         JPanel westSide = new JPanel(new FlowLayout(FlowLayout.CENTER));
         westSide.setPreferredSize(new Dimension(400, 350));
         westSide.setMaximumSize(new Dimension(400, 350));
@@ -221,8 +266,34 @@ public class MainFrame extends JFrame {
         northPanel.add(westSide, "West");
         northPanel.add(eastSide, "East");
 
+        JPanel southPanel = new JPanel(new BorderLayout());
+
+        JPanel sWestSide = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        sWestSide.setPreferredSize(new Dimension(300, 220));
+        sWestSide.setMaximumSize(new Dimension(300, 220));
+        sWestSide.add(listManipulations);
+        sWestSide.add(listScrollPane);
+
+        JPanel sCenter = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        sCenter.setPreferredSize(new Dimension(250, 220));
+        sCenter.setMaximumSize(new Dimension(250,220));
+        sCenter.add(setColor);
+        sCenter.add(listItemNums);
+        sCenter.add(choiseButton);
+
+        JPanel sEastSide = new JPanel(new FlowLayout((FlowLayout.CENTER)));
+        sEastSide.setPreferredSize(new Dimension(250, 220));
+        sEastSide.setMaximumSize(new Dimension(250,220));
+        sEastSide.add(setMoreFive);
+        sEastSide.add(doThat);
+
+        southPanel.add(sWestSide, "West");
+        southPanel.add(sCenter, "Center");
+        southPanel.add(sEastSide, "East");
+
         Container container = getContentPane();
         container.add(northPanel, "North");
+        container.add(southPanel, "South");
 
         pack();
         setVisible(true);
