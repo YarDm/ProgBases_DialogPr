@@ -1,5 +1,6 @@
 import controller.NewTableModel;
 import model.FontsForCB;
+import model.ListCelRenderer;
 import model.TableData;
 import view.FileShowDialog;
 import view.FontChoiseDialog;
@@ -114,7 +115,17 @@ public class MainFrame extends JFrame {
         listManipulations.setHorizontalAlignment(SwingConstants.CENTER);
         listManipulations.setFont(new Font("TimesNewRoman", Font.PLAIN, 15));
         String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+//        Vector data = new Vector<Object>();
+//        data.add("one");
+//        data.add("two");
+//        data.add("three");
+//        data.add("four");
+//        data.add("five");
+//        data.add("six");
+//        data.add("seven");
         list = new JList<>(data);
+        ListCellRenderer lcr = new ListCelRenderer();
+        list.setCellRenderer(lcr);
         JScrollPane listScrollPane = new JScrollPane(list);
         listScrollPane.setPreferredSize(new Dimension(285, 180));
 
@@ -218,13 +229,15 @@ public class MainFrame extends JFrame {
         });
 
         doThat.addActionListener(e -> {
-            list.setModel();
-            int fontSize = 0;
+           // list.setModel();
+            int fontSize = 5;
             for (int i = 0; i<data.length; i++){
                 fontSize = fontSize + 5;
                 Font font = new Font("TimesNewRoman", Font.ITALIC, fontSize);
-                ;
+                lcr.setFont(font);
+
             }
+            list.updateUI();
         });
 
 
