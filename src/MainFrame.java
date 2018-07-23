@@ -234,7 +234,7 @@ public class MainFrame extends JFrame {
             for (int i = 0; i<data.length; i++){
                 fontSize = fontSize + 5;
                 Font font = new Font("TimesNewRoman", Font.ITALIC, fontSize);
-                lcr.setFont(font);
+
 
             }
             list.updateUI();

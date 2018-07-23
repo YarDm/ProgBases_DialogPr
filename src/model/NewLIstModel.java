@@ -23,7 +23,7 @@ public class NewLIstModel extends AbstractListModel {
     }
 
     public void setFontToItem(int index, Font font){
-        data[index].setFont();
+
     }
 
 

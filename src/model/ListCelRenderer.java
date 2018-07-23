@@ -10,7 +10,7 @@ public class ListCelRenderer extends JLabel implements ListCellRenderer {
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
                                                   boolean cellHasFocus) {
         setText(value.toString());
-        value.
+
         return this;
     }
 
