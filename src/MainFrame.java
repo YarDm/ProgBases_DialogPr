@@ -31,10 +31,10 @@ public class MainFrame extends JFrame {
     private JFileChooser fileChooser;
     private FileShowDialog showDialog;
 
-    JList<String> list;
-    MyListCellRenderer lcr;
+    private JList<String> list;
+    private MyListCellRenderer lcr = new MyListCellRenderer();
 
-    JComboBox listItemNums;
+    private JComboBox<Integer> listItemNums;
 
 
     private MainFrame() throws IOException, FontFormatException {
@@ -116,7 +116,7 @@ public class MainFrame extends JFrame {
         listManipulations.setHorizontalAlignment(SwingConstants.CENTER);
         listManipulations.setFont(new Font("TimesNewRoman", Font.PLAIN, 15));
 
-        DefaultListModel listModel = new DefaultListModel();
+        var listModel = new DefaultListModel<String>();
         listModel.addElement("one");
         listModel.addElement("two");
         listModel.addElement("three");
@@ -126,7 +126,6 @@ public class MainFrame extends JFrame {
         listModel.addElement("seven");
 
         list = new JList<>(listModel);
-        lcr = new MyListCellRenderer();
 
         JScrollPane listScrollPane = new JScrollPane(list);
         listScrollPane.setPreferredSize(new Dimension(285, 180));
@@ -139,7 +138,7 @@ public class MainFrame extends JFrame {
         for (int i = 0; i < listModel.getSize(); i++){
             items[i] = i;
         }
-        listItemNums = new JComboBox<Integer>(items);
+        listItemNums = new JComboBox<>(items);
         listItemNums.setPreferredSize(new Dimension(230,35));
         JButton choiseButton = new JButton("Выбрать цвет");
         choiseButton.setPreferredSize(new Dimension(230,130));
@@ -216,8 +215,6 @@ public class MainFrame extends JFrame {
                     }
                     showDialog = new FileShowDialog();
                     showDialog.setText(sb.toString());
-                } catch (FileNotFoundException e1) {
-                    e1.printStackTrace();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }

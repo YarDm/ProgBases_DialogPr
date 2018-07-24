@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyListCellRenderer extends JLabel implements javax.swing.ListCellRenderer {
-    JLabel label;
+    private JLabel label;
 
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
