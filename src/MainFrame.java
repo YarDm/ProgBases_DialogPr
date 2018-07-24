@@ -1,6 +1,6 @@
 import controller.NewTableModel;
 import model.FontsForCB;
-import model.ListCelRenderer;
+import model.MyListCellRenderer;
 import model.TableData;
 import view.FileShowDialog;
 import view.FontChoiseDialog;
@@ -114,7 +114,15 @@ public class MainFrame extends JFrame {
         listManipulations.setPreferredSize(new Dimension(270,25));
         listManipulations.setHorizontalAlignment(SwingConstants.CENTER);
         listManipulations.setFont(new Font("TimesNewRoman", Font.PLAIN, 15));
-        String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+//        String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.addElement("one");
+        listModel.addElement("two");
+        listModel.addElement("three");
+        listModel.addElement("four");
+        listModel.addElement("five");
+        listModel.addElement("six");
+        listModel.addElement("seven");
 //        Vector data = new Vector<Object>();
 //        data.add("one");
 //        data.add("two");
@@ -123,8 +131,8 @@ public class MainFrame extends JFrame {
 //        data.add("five");
 //        data.add("six");
 //        data.add("seven");
-        list = new JList<>(data);
-        ListCellRenderer lcr = new ListCelRenderer();
+        list = new JList<>(listModel);
+        MyListCellRenderer lcr = new MyListCellRenderer();
         list.setCellRenderer(lcr);
         JScrollPane listScrollPane = new JScrollPane(list);
         listScrollPane.setPreferredSize(new Dimension(285, 180));
@@ -133,8 +141,8 @@ public class MainFrame extends JFrame {
         setColor.setPreferredSize(new Dimension(230,25));
         setColor.setHorizontalAlignment(SwingConstants.CENTER);
 
-        Integer[] items = new Integer[data.length];
-        for (int i = 0; i < data.length; i++){
+        Integer[] items = new Integer[listModel.getSize()];
+        for (int i = 0; i < listModel.getSize(); i++){
             items[i] = i;
         }
         listItemNums = new JComboBox<Integer>(items);
@@ -229,11 +237,12 @@ public class MainFrame extends JFrame {
         });
 
         doThat.addActionListener(e -> {
-           // list.setModel();
-            int fontSize = 5;
-            for (int i = 0; i<data.length; i++){
-                fontSize = fontSize + 5;
-                Font font = new Font("TimesNewRoman", Font.ITALIC, fontSize);
+            int fontSize = 10;
+            for (int i = 0; i<listModel.getSize(); i++){
+                fontSize = fontSize + 10;
+                lcr.setFontHigh(fontSize);
+//                Component comp = list.getComponent(1);
+//                comp.setFont(new Font("TimesNewRoman", Font.ITALIC, fontSize));
 
 
             }
