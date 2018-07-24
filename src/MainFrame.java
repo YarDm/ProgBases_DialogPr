@@ -32,6 +32,7 @@ public class MainFrame extends JFrame {
     private FileShowDialog showDialog;
 
     JList<String> list;
+    MyListCellRenderer lcr;
 
     JComboBox listItemNums;
 
@@ -114,7 +115,7 @@ public class MainFrame extends JFrame {
         listManipulations.setPreferredSize(new Dimension(270,25));
         listManipulations.setHorizontalAlignment(SwingConstants.CENTER);
         listManipulations.setFont(new Font("TimesNewRoman", Font.PLAIN, 15));
-//        String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+
         DefaultListModel listModel = new DefaultListModel();
         listModel.addElement("one");
         listModel.addElement("two");
@@ -123,16 +124,9 @@ public class MainFrame extends JFrame {
         listModel.addElement("five");
         listModel.addElement("six");
         listModel.addElement("seven");
-//        Vector data = new Vector<Object>();
-//        data.add("one");
-//        data.add("two");
-//        data.add("three");
-//        data.add("four");
-//        data.add("five");
-//        data.add("six");
-//        data.add("seven");
+
         list = new JList<>(listModel);
-        MyListCellRenderer lcr = new MyListCellRenderer();
+        lcr = new MyListCellRenderer();
 
         JScrollPane listScrollPane = new JScrollPane(list);
         listScrollPane.setPreferredSize(new Dimension(285, 180));
@@ -237,16 +231,7 @@ public class MainFrame extends JFrame {
         });
 
         doThat.addActionListener(e -> {
-                    list.setCellRenderer(lcr);
-//            int fontSize = 10;
-//            for (int i = 0; i<listModel.getSize(); i++){
-//                fontSize = fontSize + 10;
-//                lcr.setFontHigh(fontSize);
-//                Component comp = list.getComponent(1);
-//                comp.setFont(new Font("TimesNewRoman", Font.ITALIC, fontSize));
-
-
-
+            list.setCellRenderer(lcr);
             list.updateUI();
         });
 
