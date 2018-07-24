@@ -20,11 +20,11 @@ public class FontChoiseDialog extends JDialog implements ActionListener {
     private JTextField textField;
     // Флаги выбора атрибутов шрифта - полужирный / курсив.
     private JCheckBox boldBox, italicBox;
-    private JLabel nameLabel, sizeLabel;
     // Размеры шрифтов.
     private String[] sizeArray;
     // Меню выбора названия шрифта и его размера.
-    private JComboBox nameComboBox, sizeComboBox;
+    private JComboBox<String> nameComboBox;
+    private JComboBox<String> sizeComboBox;
     // Кнопки ОК, Отмена.
     private JButton okButton, cancelButton;
     // Выбранный шрифт.
@@ -42,7 +42,7 @@ public class FontChoiseDialog extends JDialog implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(owner);
         setLayout(null);
-        //********Buttons**********
+
         okButton = new JButton("Ok");
         cancelButton = new JButton("Cancel");
         JPanel butPanel = new JPanel();
@@ -52,18 +52,18 @@ public class FontChoiseDialog extends JDialog implements ActionListener {
         okButton.addActionListener(this);
         cancelButton.addActionListener(this);
         add(butPanel);
-        //*********LABEL***********
-        nameLabel = new JLabel("Font");
-        sizeLabel = new JLabel("Size");
+
+        JLabel nameLabel = new JLabel("Font");
+        JLabel sizeLabel = new JLabel("Size");
 
         nameLabel.setBounds(10, 10, 40, 10);
         sizeLabel.setBounds(160, 10, 40, 10);
 
         add(nameLabel);
         add(sizeLabel);
-        //**********JLIST*************
-        nameComboBox = new JComboBox(fontName);
-        sizeComboBox = new JComboBox(getSizes());
+
+        nameComboBox = new JComboBox<>(fontName);
+        sizeComboBox = new JComboBox<>(getSizes());
         sizeComboBox.addActionListener(this);
         nameComboBox.addActionListener(this);
         nameComboBox.setBounds(10, 30, 140, 20);
@@ -84,7 +84,7 @@ public class FontChoiseDialog extends JDialog implements ActionListener {
         Border titled = BorderFactory.createTitledBorder(etched, "Style");
         boxPanel.setBorder(titled);
         add(boxPanel);
-        //*******TextField*********
+
         textField = new JTextField();
         textField.setFont(new Font(fontName[0], Font.PLAIN, 5));
         textField.setBounds(35, 150, 150, 50);
@@ -153,7 +153,7 @@ public class FontChoiseDialog extends JDialog implements ActionListener {
 
     /**
      * Показывает диалоговое окно выбора шрифта.
-     * @return <code>true</code>, если пользователь подтвердил выбор шрифта, иначе <code>false</code>.
+     * @return true, если пользователь подтвердил выбор шрифта, иначе false.
      */
     public boolean showDialog() {
         setVisible(true);

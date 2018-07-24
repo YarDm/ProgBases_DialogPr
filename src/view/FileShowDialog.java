@@ -3,12 +3,13 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Класс реализующий отображение открытого файла на основе JDialog
+ * Текст транслируется в JTextArea
+ */
 public class FileShowDialog extends JDialog {
 
-    JFrame frame;
-    JTextArea jTextArea;
-
-
+    private JTextArea jTextArea;
 
     public FileShowDialog(){
         super.setPreferredSize(new Dimension(700, 400));
@@ -23,6 +24,10 @@ public class FileShowDialog extends JDialog {
         setVisible(true);
     }
 
+    /**
+     * Устанавливает текст в созданное поле
+     * @param text текст из файла
+     */
     public void setText(String text){
         jTextArea.setText(text);
     }

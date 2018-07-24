@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+/**
+ * Класс реализует главное окно приложения
+ */
 public class MainFrame extends JFrame {
 
     private TableData tableData;
@@ -35,6 +38,7 @@ public class MainFrame extends JFrame {
     private MyListCellRenderer lcr = new MyListCellRenderer();
 
     private JComboBox<Integer> listItemNums;
+
 
 
     private MainFrame() throws IOException, FontFormatException {
@@ -150,6 +154,9 @@ public class MainFrame extends JFrame {
         doThat.setPreferredSize(new Dimension(230,160));
 
 
+        /**
+         * Реализации слушателей кнопок и списков
+         */
         okButton.addActionListener(e -> {
             int cols = Integer.parseInt(rowQuantity.getText());
             int rows = Integer.parseInt(colQuantity.getText());
@@ -233,6 +240,10 @@ public class MainFrame extends JFrame {
         });
 
 
+        /**
+         * Реализация менеджеров расположения в основе BorderLayouts
+         * в которые помещены FlowLayouts для расположения элементов
+         */
         JPanel northPanel = new JPanel(new BorderLayout());
 
         JPanel westSide = new JPanel(new FlowLayout(FlowLayout.CENTER));
