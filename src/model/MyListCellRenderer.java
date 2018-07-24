@@ -17,7 +17,12 @@ public class MyListCellRenderer extends JLabel implements javax.swing.ListCellRe
 
         label = new JLabel();
         label.setText(value.toString());
-        label.setFont(new Font("TimesNewRoman", Font.ITALIC, fontHigh));
+        while (index<list.getModel().getSize()){
+
+            fontHigh += 10;
+            label.setFont(new Font("TimesNewRoman", Font.ITALIC, fontHigh));
+
+            }
 
         return label;
     }

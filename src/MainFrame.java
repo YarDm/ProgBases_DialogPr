@@ -133,7 +133,7 @@ public class MainFrame extends JFrame {
 //        data.add("seven");
         list = new JList<>(listModel);
         MyListCellRenderer lcr = new MyListCellRenderer();
-        list.setCellRenderer(lcr);
+
         JScrollPane listScrollPane = new JScrollPane(list);
         listScrollPane.setPreferredSize(new Dimension(285, 180));
 
@@ -237,15 +237,16 @@ public class MainFrame extends JFrame {
         });
 
         doThat.addActionListener(e -> {
-            int fontSize = 10;
-            for (int i = 0; i<listModel.getSize(); i++){
-                fontSize = fontSize + 10;
-                lcr.setFontHigh(fontSize);
+                    list.setCellRenderer(lcr);
+//            int fontSize = 10;
+//            for (int i = 0; i<listModel.getSize(); i++){
+//                fontSize = fontSize + 10;
+//                lcr.setFontHigh(fontSize);
 //                Component comp = list.getComponent(1);
 //                comp.setFont(new Font("TimesNewRoman", Font.ITALIC, fontSize));
 
 
-            }
+
             list.updateUI();
         });
 
